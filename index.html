@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <script>
+      async function main() {
+        const ctx = document.getElementById("myChart").getContext("2d");
+        let { data } = await axios.get("http://localhost:3000");
+        console.log(data);
+        const myChart = new Chart(ctx, {
+          type: "bubble",
+          data: {
+            labels: data.map((entry) => entry.sl_no),
+            datasets: [
+              {
+                label: "# of Votes",
+                data: data.map((entry) => ({
+                  x: Number(entry.hsc_p),
+                  y: Number(entry.salary),
+                  r: 3,
+                })),
+
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                  },
+                },
+              ],
+            },
+          },
+        });
+      }
+      main();
+    </script>
+  </body>
+</html>

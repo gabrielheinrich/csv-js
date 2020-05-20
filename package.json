@@ -1,0 +1,17 @@
+{
+  "name": "csv-js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Gabriel Heinrich <gabriel@codecampleipzig.de>",
+  "license": "MIT",
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "axios": "^0.19.2",
+    "cors": "^2.8.5",
+    "csv-parse": "^4.9.1",
+    "koa": "^2.12.0",
+    "request": "^2.88.2",
+    "unzip": "^0.1.11",
+    "unzipper": "^0.10.11"
+  }
+}
